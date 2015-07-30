@@ -64,7 +64,7 @@ void print(Node *head){
 Node* delete_number(Node *head,int number){
 	Node *q;
 	Node *p;
-	for(q=NULL,p=head;p;q=p,p->next){
+	for(q=NULL,p=head;p;q=p,p=p->next){
 		if(p->value == number){
 			if(q){
 				q->next = p->next;
