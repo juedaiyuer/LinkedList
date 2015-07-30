@@ -8,6 +8,8 @@
 } Node;
 */
 
+// only delete operate not work...
+
 Node* add(Node*head,int number);
 void print(Node *head);
 Node* delete_number(Node *head,int number);  //delete node of linkedList is number 
