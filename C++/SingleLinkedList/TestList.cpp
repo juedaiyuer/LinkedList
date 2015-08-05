@@ -76,6 +76,22 @@ class MyList{
 
 		}
 
+		void DelAt(int k)   
+		{
+			PNODE p1,p2;				
+			for(p2=NULL,p1=pHead;p1;p2=p1,p1=p1->pNext)
+			{
+				if(p1->val == k)
+					if(p2){
+						p2->pNext = p1->pNext;
+					}else{
+						pHead = p1->pNext;
+					}
+					delete(p1);
+			}
+
+		}												
+
 		void Travel()  // print list 
 		{
 				PNODE pTemp = this->pHead;
@@ -100,6 +116,28 @@ class MyList{
 			return cnt;
 		}
 
+		void sort()  // 1.from big to small  2.this method of sort ignore complexity,only traversal.
+
+		{
+			int n = this->GetNodeCnt();
+			PNODE p1,p2;
+			for(int i=0;i<n-1;i++)
+			{
+				p1 = pHead;
+				for(int j=1;j<n-1-i;j++)
+				{
+					p2 = p1->pNext;
+					if(p1->val<p2->val)
+					{
+						int k = p1->val;
+						p1->val = p2->val;
+						p2->val = k;
+					}
+					p1 = p1->pNext;
+				}
+			}
+		}
+
 
 };
 void main()
@@ -113,7 +151,15 @@ void main()
 	}
 	list.Travel();
 	cout<<list.GetNodeCnt()<<endl;
+
 	list.Init();
 	list.Travel();
+	cout<<list.GetNodeCnt()<<endl;
+
+	list.DelAt(2);
+    list.Travel();
+
+//	list.sort();
+//	list.Travel();
 
 }
